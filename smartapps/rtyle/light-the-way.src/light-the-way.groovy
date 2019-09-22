@@ -20,9 +20,9 @@ definition(
 	author		: 'Ross Tyler',
 	description	: 'Light the way around this location',
 	category	: "Convenience",
-	iconUrl		: 'http://cdn.device-icons.smartthings.com/Home/home5-icn.png',
-	iconX2Url	: 'http://cdn.device-icons.smartthings.com/Home/home5-icn@2x.png',
-	iconX3Url	: 'http://cdn.device-icons.smartthings.com/Home/home5-icn@3x.png',
+	iconUrl		: "https://raw.githubusercontent.com/rtyle/light-the-way/master/resources/icons/app.png",
+	iconX2Url	: "https://raw.githubusercontent.com/rtyle/light-the-way/master/resources/icons/app@2x.png",
+	iconX3Url	: "https://raw.githubusercontent.com/rtyle/light-the-way/master/resources/icons/app@3x.png",
 )
 
 import physicalgraph.app.DeviceWrapper
