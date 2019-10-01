@@ -19,7 +19,7 @@ definition(
 	namespace	: 'rtyle',
 	author		: 'Ross Tyler',
 	description	: 'Light the way around this location',
-	category	: 'Convenience",
+	category	: 'Convenience',
 	iconUrl		: 'https://raw.githubusercontent.com/rtyle/light-the-way/master/smartapps/rtyle/light-the-way.src/app.png',
 	iconX2Url	: 'https://raw.githubusercontent.com/rtyle/light-the-way/master/smartapps/rtyle/light-the-way.src/app@2x.png',
 	iconX3Url	: 'https://raw.githubusercontent.com/rtyle/light-the-way/master/smartapps/rtyle/light-the-way.src/app@3x.png',
