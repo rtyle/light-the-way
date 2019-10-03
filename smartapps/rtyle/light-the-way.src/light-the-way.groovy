@@ -45,7 +45,7 @@ def getMotionSensors() {[
 	WWMS	: 'Walkway',
 ]}
 def getSwitchInputs() {[
-	DLSI	: 'Daylight',
+	DTSI	: 'Daytime',
 	VWSI	: 'Visitor Welcome',
 ]}
 def getSwitches() {[
@@ -64,16 +64,16 @@ def getSwitchLevels() {[
 // respond according to current state
 def respond(message) {
 	log.info message
-	def daylight		= findOn DLSI
+	def daytime			= findOn DTSI
 	def visitorWelcome	= findOn VWSI
 	setLevel BYSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
 		{valueIf  50, {findOpen			PDCS}},
 		{valueIf   5, {visitorWelcome}},
 	)
 	setLevel DWSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
 		{valueIf 100, {findMotion		DWMS}},
 		{valueIf 100, {findOpen			GDCS}},
@@ -82,7 +82,7 @@ def respond(message) {
 		{valueIf   5, {visitorWelcome}},
 	)
 	setLevel EWSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
 		{valueIf 100, {findMotion		FPMS, WWMS}},
 		{valueIf 100, {findOpen			FDCS}},
@@ -90,7 +90,7 @@ def respond(message) {
 		{valueIf  25, {findOpen			GDCS}},
 	)
 	setLevel FPSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
 		{valueIf 100, {findMotion		FPMS, WWMS}},
 		{valueIf 100, {findOpen			FDCS}},
@@ -99,12 +99,12 @@ def respond(message) {
 		{valueIf  10, {visitorWelcome}},
 	)
 	setLevel GCSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
 		{valueIf 100, {findOpen			GDCS, SPCS}},
 	)
 	setLevel PDSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
 		{valueIf 100, {findOpen			PDCS}},
 		{valueIf  50, {findMotion		SPMS}},
@@ -112,7 +112,7 @@ def respond(message) {
 		{valueIf  10, {visitorWelcome}},
 	)
 	setLevel PWSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
 		{valueIf 100, {findOpen			PDCS}},
 		{valueIf  50, {findMotion		SPMS}},
@@ -120,7 +120,7 @@ def respond(message) {
 		{valueIf  30, {visitorWelcome}},
 	)
 	setLevel SPSL, findValue(
-		{valueIf   0, {daylight}},
+		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
 		{valueIf 100, {findMotion		SPMS}},
 		{valueIf 100, {findOpen			SPCS}},
