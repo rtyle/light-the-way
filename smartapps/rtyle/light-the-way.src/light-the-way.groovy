@@ -69,7 +69,7 @@ def respond(message) {
 	setLevel BYSL, findValue(
 		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
-		{valueIf  50, {findOpen			PDCS}},
+		{valueIf 100, {findOpen			PDCS}},
 		{valueIf   5, {visitorWelcome}},
 	)
 	setLevel DWSL, findValue(
