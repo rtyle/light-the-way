@@ -30,7 +30,8 @@ import physicalgraph.app.EventWrapper
 
 def getContactSensors() {[
 	FDCS	: 'Front Door',
-	GDCS	: 'Garage Door',
+	GDCS	: 'Garage Double Door',
+	GSCS	: 'Garage Single Door',
 	PDCS	: 'Patio Door',
 	SPCS	: 'Side Porch',
 ]}
@@ -76,7 +77,7 @@ def respond(message) {
 		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
 		{valueIf 100, {findMotion		DWMS}},
-		{valueIf 100, {findOpen			GDCS}},
+		{valueIf 100, {findOpen			GDCS, GSCS}},
 		{valueIf  50, {findMotion		FPMS, SPMS, WWMS}},
 		{valueIf  50, {findOpen			FDCS, SPCS}},
 		{valueIf   5, {visitorWelcome}},
@@ -87,7 +88,7 @@ def respond(message) {
 		{valueIf 100, {findMotion		FPMS, WWMS}},
 		{valueIf 100, {findOpen			FDCS}},
 		{valueIf  25, {findMotion		DWMS}},
-		{valueIf  25, {findOpen			GDCS}},
+		{valueIf  25, {findOpen			GDCS, GSCS}},
 	)
 	setLevel FPSL, findValue(
 		{valueIf   0, {daytime}},
@@ -95,13 +96,13 @@ def respond(message) {
 		{valueIf 100, {findMotion		FPMS, WWMS}},
 		{valueIf 100, {findOpen			FDCS}},
 		{valueIf  50, {findMotion		DWMS}},
-		{valueIf  50, {findOpen			GDCS}},
+		{valueIf  50, {findOpen			GDCS, GSCS}},
 		{valueIf  10, {visitorWelcome}},
 	)
 	setLevel GCSL, findValue(
 		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
-		{valueIf 100, {findOpen			GDCS, SPCS}},
+		{valueIf 100, {findOpen			GDCS, GSCS, SPCS}},
 	)
 	setLevel PDSL, findValue(
 		{valueIf   0, {daytime}},
@@ -124,7 +125,7 @@ def respond(message) {
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
 		{valueIf 100, {findMotion		SPMS}},
 		{valueIf 100, {findOpen			SPCS}},
-		{valueIf  50, {findOpen			GDCS, PDCS}},
+		{valueIf  50, {findOpen			GDCS, GSCS, PDCS}},
 		{valueIf   5, {visitorWelcome}},
 	)
 }
