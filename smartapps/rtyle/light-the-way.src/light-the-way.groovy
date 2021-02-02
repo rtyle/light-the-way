@@ -40,14 +40,14 @@ def getIlluminanceMeasurements() {[
 	FPIM	: 'Front Porch',
 ]}
 def getMotionSensors() {[
+	DWMS	: 'Driveway',
+	FPMS	: 'Front Porch',
 	SPMS	: 'Side Porch',
+	WWMS	: 'Walkway',
 ]}
 def getSwitchInputs() {[
 	DTSI	: 'Daytime',
 	VWSI	: 'Visitor Welcome',
-	DWSI	: 'Driveway Motion',
-	FPSI	: 'Front Porch Motion',
-	FYSI	: 'Front Yard Motion',
 ]}
 def getSwitches() {[
 ]}
@@ -76,27 +76,26 @@ def respond(message) {
 	setLevel DWSL, findValue(
 		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	DWIM) && !ignoreIlluminance}},
-		{valueIf 100, {findOn			DWSI}},
+		{valueIf 100, {findMotion		DWMS}},
 		{valueIf 100, {findOpen			GDCS, GSCS}},
-		{valueIf  50, {findOn			FPSI, FYSI}},
-		{valueIf  50, {findMotion		SPMS}},
+		{valueIf  50, {findMotion		FPMS, SPMS, WWMS}},
 		{valueIf  50, {findOpen			FDCS, SPCS}},
 		{valueIf   5, {visitorWelcome}},
 	)
 	setLevel EWSL, findValue(
 		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
-		{valueIf 100, {findOn			FPSI, FYSI}},
+		{valueIf 100, {findMotion		FPMS, WWMS}},
 		{valueIf 100, {findOpen			FDCS}},
-		{valueIf  25, {findOn			DWSI}},
+		{valueIf  25, {findMotion		DWMS}},
 		{valueIf  25, {findOpen			GDCS, GSCS}},
 	)
 	setLevel FPSL, findValue(
 		{valueIf   0, {daytime}},
 		{valueIf   0, {findBrighter(64,	FPIM) && !ignoreIlluminance}},
-		{valueIf 100, {findOn			FPSI, FYSI}},
+		{valueIf 100, {findMotion		FPMS, WWMS}},
 		{valueIf 100, {findOpen			FDCS}},
-		{valueIf  50, {findOn			DWSI}},
+		{valueIf  50, {findMotion		DWMS}},
 		{valueIf  50, {findOpen			GDCS, GSCS}},
 		{valueIf  10, {visitorWelcome}},
 	)
